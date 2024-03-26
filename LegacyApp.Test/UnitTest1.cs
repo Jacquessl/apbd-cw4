@@ -1,40 +1,54 @@
+namespace LegacyApp.Tests;
 
-namespace LegacyApp.Test;
-
-public class Tests
+public class UnitTest1
 {
-    [Test]
-    public void AddUserTest()
+    [Fact]
+    public void AddUser_ReturnsFalseWhenFirstNameIsEmpty()
     {
+        
+        // Arrange
         var userService = new UserService();
-        var addResult = userService.AddUser(null, "dsads", "dse@gmail.com", DateTime.Parse("1982-03-21"), 1);
-        Assert.False(addResult);
-    }
-    [Test]
-    public void AddUserTest2()
-    {
-        var userService = new UserService();
-        var addResult = userService.AddUser("noice", null, "dse@gmailcom", DateTime.Parse("1982-03-21"), 1);
-        Assert.False(addResult);
-    }
-    [Test]
-    public void AddUserTest3()
-    {
-        var userService = new UserService();
-        var addResult = userService.AddUser("noice", "Doe", "dsegmail.com", DateTime.Parse("1982-03-21"), 1);
-        Assert.True(addResult);
-    }[Test]
-    public void AddUserTest4()
-    {
-        var userService = new UserService();
-        var addResult = userService.AddUser("noice", "Doe", "dse@gmailcom", DateTime.Parse("1982-03-21"), 1);
-        Assert.True(addResult);
-    }[Test]
-    public void AddUserTest5()
-    {
-        var userService = new UserService();
-        var addResult = userService.AddUser("noice", "Doe", "@.", DateTime.Parse("1982-03-21"), 1);
-        Assert.True(addResult);
+
+        // Act
+        var result = userService.AddUser(
+            null, 
+            "Kowalski", 
+            "kowalski@kowalski.pl",
+            DateTime.Parse("2000-01-01"),
+            1
+        );
+
+        // Assert
+        // Assert.Equal(false, result);
+        Assert.False(result);
     }
     
+    // AddUser_ReturnsFalseWhenMissingAtSignAndDotInEmail
+    // AddUser_ReturnsFalseWhenYoungerThen21YearsOld
+    // AddUser_ReturnsTrueWhenVeryImportantClient
+    // AddUser_ReturnsTrueWhenImportantClient
+    // AddUser_ReturnsTrueWhenNormalClient
+    // AddUser_ReturnsFalseWhenNormalClientWithNoCreditLimit
+    // AddUser_ThrowsExceptionWhenUserDoesNotExist
+    // AddUser_ThrowsExceptionWhenUserNoCreditLimitExistsForUser
+    
+    [Fact]
+    public void AddUser_ThrowsArgumentExceptionWhenClientDoesNotExist()
+    {
+        
+        // Arrange
+        var userService = new UserService();
+
+        // Act
+        Action action = () => userService.AddUser(
+            "Jan", 
+            "Kowalski", 
+            "kowalski@kowalski.pl",
+            DateTime.Parse("2000-01-01"),
+            100
+        );
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
+    }
 }
