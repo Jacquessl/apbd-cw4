@@ -16,7 +16,8 @@ namespace LegacyApp
                 {"Malewski", 20000},
                 {"Smith", 10000},
                 {"Doe", 3000},
-                {"Kwiatkowski", 1000}
+                {"Kwiatkowski", 1000},
+                {"Andrzejewicz", 0}
             };
         
         public void Dispose()
