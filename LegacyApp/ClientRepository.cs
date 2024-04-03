@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 
 namespace LegacyApp
 {
@@ -22,21 +20,6 @@ namespace LegacyApp
         
         public ClientRepository()
         {
-        }
-
-        /// <summary>
-        /// Simulating fetching a client from remote database
-        /// </summary>
-        /// <returns>Returning client object</returns>
-        internal Client GetById(int clientId)
-        {
-            int randomWaitTime = new Random().Next(2000);
-            //Thread.Sleep(randomWaitTime);
-            //tutaj tez usunac
-            if (Database.ContainsKey(clientId))
-                return Database[clientId];
-
-            throw new ArgumentException($"User with id {clientId} does not exist in database");
         }
     }
 }

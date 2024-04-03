@@ -76,7 +76,7 @@ public class UserServiceTests
     {
         var userService = new UserService();
         Assert.Throws<ArgumentException>(() =>
-            userService.AddUser("John", "Andrzejewiczz", "dsa@.", DateTime.Parse("1990-03-20"), 7));
+            userService.AddUser("John", "Anderzejewiczz", "dsa@.", DateTime.Parse("1990-03-20"), 7));
     }
     
     [Fact]
